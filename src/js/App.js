@@ -1,17 +1,22 @@
 import React from 'react';
 
+import Button from './Button';
+import Jumbotron from './Jumbotron';
+import Container from './Container';
+
 
 export default () => {
     return (
-        <div className="jumbotron jumbotron-fluid text-sm-center" style={{
-            backgroundImage: "url(img/forest.jpg)",
-            color: 'white'
-            }}>
-            <div className="container">
+        <Jumbotron>
+            <Container>
                 <h1>Building React.js User Interfaces</h1>
                 <p>with Bootstrap and SASS.</p>
-                <p><a className="btn btn-primary" href="http://02geek.com" target="_blank">Discover things.</a></p>
-            </div>
-        </div>
+                <p>
+                    <Button className="btn btn-primary" href="http://02geek.com" target="_blank" disabled />
+                    <Button className="btn btn-danger" target="_blank" disabled />
+                </p>
+            </Container>
+        </Jumbotron>
+        
     );
 };
