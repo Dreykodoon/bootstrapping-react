@@ -1,0 +1,14 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+$image: url("../img/forest.jpg");
+$text-color: white;
+
+@mixin background-it($path) {
+    background-image: $path;
+    color: $text-color;
+}
+
+.custom-jumbotron-styles {
+    @include background-it($image);
+}
