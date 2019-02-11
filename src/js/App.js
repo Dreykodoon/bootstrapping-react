@@ -1,9 +1,9 @@
 import React from 'react';
-import {Transition} from 'react-transition-group';
 
 import Button from './Button';
 import Jumbotron from './Jumbotron';
 import Container from './Container';
+import AppearTransition from './AppearTransition';
 
 
 class App extends React.Component {
@@ -26,20 +26,11 @@ class App extends React.Component {
 
     renderExitButton = () => {
         return (
-            <Transition in={this.state.showButton} timeout={200} unmountOnExit>
-                {(state) => {
-                    const className = `transition-style transition-${state}`;
-
-                    return (
-                        <div className={className}>
-                            <Button className="btn btn-danger" onClick={this.hideJumbotron}>
-                                Discover things!
-                            </Button>
-                        </div>
-                    );
-                }}
-            </Transition>
-            
+            <AppearTransition transIn={this.state.showButton} unmountOnExit>
+                <Button className="btn btn-danger" onClick={this.hideJumbotron}>
+                    Hide Jumbotron
+                </Button>
+            </AppearTransition>
         );
     };
 
@@ -47,26 +38,18 @@ class App extends React.Component {
         const { show } = this.state;
 
         return (
-            <Transition in={show} timeout={200}>
-                {(state) => {
-                    const className = `transition-style transition-${state}`;
-
-                    return (
-                        <div className={className}>
-                            <Jumbotron>
-                                <Container>
-                                    <h1>Building React.js User Interfaces</h1>
-                                    <p>with Bootstrap and SASS.</p>
-                                    <Button className="btn btn-primary" onClick={this.displayButton}>
-                                        Discover things!
-                                    </Button>
-                                    {this.renderExitButton()}
-                                </Container>
-                            </Jumbotron>
-                        </div>
-                    )
-                }}
-            </Transition>
+            <AppearTransition transIn={this.state.show}>
+                <Jumbotron>
+                    <Container>
+                        <h1>Building React.js User Interfaces</h1>
+                        <p>with Bootstrap and SASS.</p>
+                        <Button className="btn btn-primary" onClick={this.displayButton}>
+                            Display Button
+                        </Button>
+                        {this.renderExitButton()}
+                    </Container>
+                </Jumbotron>
+            </AppearTransition>
         );
     }
 }
