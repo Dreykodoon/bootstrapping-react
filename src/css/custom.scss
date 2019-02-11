@@ -12,3 +12,15 @@ $text-color: white;
 .custom-jumbotron-styles {
     @include background-it($image);
 }
+
+.transition-style {
+    transition: opacity 1000ms ease-in-out;
+}
+
+.transition-entering {
+    opacity: 0;
+}
+
+.transition-entered {
+    opacity: 1;
+}
