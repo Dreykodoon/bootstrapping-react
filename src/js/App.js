@@ -8,18 +8,46 @@ import Container from './Container';
 
 class App extends React.Component {
     state = {
-        show: false
+        show: false,
+        showButton: false
     };
 
     componentDidMount() {
         this.setState({show: true});
     }
 
+    displayButton = () => {
+        this.setState({showButton: true});
+    };
+
+    hideJumbotron = () => {
+        this.setState({show: false});
+    };
+
+    renderExitButton = () => {
+        return (
+            <Transition in={this.state.showButton} timeout={200} unmountOnExit>
+                {(state) => {
+                    const className = `transition-style transition-${state}`;
+
+                    return (
+                        <div className={className}>
+                            <Button className="btn btn-danger" onClick={this.hideJumbotron}>
+                                Discover things!
+                            </Button>
+                        </div>
+                    );
+                }}
+            </Transition>
+            
+        );
+    };
+
     render() {
         const { show } = this.state;
 
         return (
-            <Transition in={show} timeout={200} unmountOnExit>
+            <Transition in={show} timeout={200}>
                 {(state) => {
                     const className = `transition-style transition-${state}`;
 
@@ -29,10 +57,10 @@ class App extends React.Component {
                                 <Container>
                                     <h1>Building React.js User Interfaces</h1>
                                     <p>with Bootstrap and SASS.</p>
-                                    <p>
-                                        <Button className="btn btn-primary" href="http://02geek.com" target="_blank" />
-                                        <Button className="btn btn-danger" target="_blank" />
-                                    </p>
+                                    <Button className="btn btn-primary" onClick={this.displayButton}>
+                                        Discover things!
+                                    </Button>
+                                    {this.renderExitButton()}
                                 </Container>
                             </Jumbotron>
                         </div>

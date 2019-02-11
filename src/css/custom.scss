@@ -24,3 +24,11 @@ $text-color: white;
 .transition-entered {
     opacity: 1;
 }
+
+.transition-exiting {
+    opacity: 1;
+}
+
+.transition-exited {
+    opacity: 0;
+}

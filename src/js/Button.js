@@ -7,7 +7,7 @@ export default (props) => {
 
     return (
         <Tag {...props} className={className}>
-            Discover things.
+            {props.children}
         </Tag>
     );
 };
